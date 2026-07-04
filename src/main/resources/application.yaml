@@ -8,4 +8,14 @@ spring:
     password: pass
     url: jdbc:postgresql://localhost:5432/project_db
 
+  thymeleaf:
+    cache: false
+    encoding: utf-8
+    mode: HTML
+    prefix: classpath:/templates/
+    suffix: .html
 
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true

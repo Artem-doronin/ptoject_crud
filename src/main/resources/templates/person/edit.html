@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать Person</title>
+    <style>
+        .form-group { margin-bottom: 15px; }
+        label { display: inline-block; width: 80px; }
+        input { padding: 5px; width: 200px; }
+        .btn-save {
+            background: #4CAF50;
+            color: white;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .btn-save:hover { background: #45a049; }
+        .btn-cancel {
+            background: #999;
+            color: white;
+            padding: 8px 20px;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+        .btn-cancel:hover { background: #777; }
+    </style>
+</head>
+<body>
+<h1>✏️ Редактировать Person</h1>
+
+<form th:action="@{/persons/{id}(id=${person.id})}" th:object="${person}" method="post">
+    <input type="hidden" name="_method" value="PUT"/>
+
+    <div class="form-group">
+        <label>ID:</label>
+        <span th:text="*{id}"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Имя:</label>
+        <input type="text" th:field="*{name}" required/>
+    </div>
+
+    <div class="form-group">
+        <label>Возраст:</label>
+        <input type="number" th:field="*{age}" required/>
+    </div>
+
+    <div>
+        <button type="submit" class="btn-save">💾 Сохранить</button>
+        <a href="/persons" class="btn-cancel">❌ Отмена</a>
+    </div>
+</form>
+</body>
+</html>
